@@ -66,6 +66,8 @@ theme_set(theme_bw()) # Not necessary but creates a dark-on-light theme for plot
 
 *TIP: Before you start working on this assignment, save this file as "Lab2_YourName_YourStudentNumber.Rmd".*
 
+\newpage 
+
 # Question 1 [9 marks]
 
 Dental treatments (e.g., fillings) can be anxiety-inducing for children. One of the outcomes collected by Malami et al. (2026) related to how well the patients tolerate the treatment as measured by the Frankl behaviour rating scale. In this questions, we are interested in the percentage of children aged 6-12 with negative behaviours during conventional treatment of dental caries (cavities). For a description of the Frankl behaviour rating scale, and how to interpret the scores, see the "Behavioural assessment" of the "Materials and methods" section of the Malami et al. (2026) paper. 
@@ -78,7 +80,7 @@ Be sure to add comments to your code to describe what it's doing.
 
 ```{r}
 # YOUR CODE HERE
-
+set.seed(288) #Change the seed to your student number here.
 ```
 
 Report the confidence interval you computed in the following format: [lower bound, upper bound]. Round to 4 decimal points.
@@ -138,6 +140,9 @@ YOUR ANSWER HERE
 **b.** For all parts of Question *2b*, consider the following research question: Do the majority of 6-12 year old children behave at least as well (as defined by the Frankl behaviour rating scale) with the new chemo-mechanical method compared to the conventional method during treatment of dental caries? 
 
 *i* *(1 mark)* State the null and alternative hypotheses that corresponds with this research question. Be sure to define the relevant parameter(s) in the context of the Malami et al. (2026) study.
+
+*TIP for the lab assignments and for the final project report: If you copy and paste non-standard (non-English) characters (such as greek letters, non-strict inequality signs, etc.) from another program into your Rmd file, you may end up being unable to knit your Rmd file to a PDF file. If you would like to use math symbols, you can use LaTeX syntax to write them in your .Rmd file. For example, you can write $p \leq 0$ as a nicer way of writing "p <= 0", or $\hat{p} \neq 1$ as a nicer way of writing "p hat =/= 1". Do not try to copy and paste these symbols from another program or website.*
+
 
 YOUR ANSWER HERE
 
