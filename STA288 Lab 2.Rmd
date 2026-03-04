@@ -1,0 +1,189 @@
+---
+title: "STA288 Winter 2026 Lab 2 Assignment: Statistics Inference on Proportions Using R"
+author: "STA288 Teaching Team"
+date: "2026-03-02"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+# General Instructions
+
+- Lab 2 Assignment (both .Rmd & .pdf) - Due 11:59pm, Thursday, March 12, 2026, on Quercus
+- Direct link to assignment: https://q.utoronto.ca/courses/427449/assignments/1670280
+- Graded out of 20 marks and is worth 8% of your grade
+- *We strongly recommend you review the R code used in [LearnR Module 2](https://rconnect.utstat.utoronto.ca/STA288Module2/) and the first couple of sections of [LearnR Module 3](https://rconnect.utstat.utoronto.ca/STA288Module3/) **before** attempting this lab assignment so you will be familiar with some R code that will be useful for this assignment.*
+- Note that late assignments and assignments submitted other ways (e.g., over email) will not be accepted. If you have trouble knitting your assignment, submit your completed Rmd on its own by the deadline so you can earn partial credit toward this assignment.
+- To facilitate grading and to ensure that grades can be returned to you in a timely manner, please be mindful of the word limit for the written answer questions. If you write more than the word limit, we will only assess the first part of your answer up to limit for each question. The word limits given are quite liberal, and an answer worth full marks is possible in much fewer words.
+- *This is an individual assignment so you must answer the questions and write/run R code on your own; no sharing of answers permitted.*
+- Recall from the syllabus that the work you submit for this course must be your own and may not include any content from generative artificial intelligence (AI) tools, either verbatim or with edits. You may, however, use generative AI to support your work on assignments in this course in the following ways as long as the use(s) are stated on your assignment:
+\begin{itemize}
+    \item To answer general questions about high-level concepts covered in this course or assignment.
+    \item To assist with understanding and debugging R coding errors.
+    \item To assist with basic writing and grammar (e.g., as a spellchecker or to ensure consistency of verb tenses).
+\end{itemize}
+
+Please note that any uses of generative AI beyond the ones listed above are *not* permitted. 
+
+- If you choose to use any AI tools (e.g. Grammarly, Copilot (including the Copilot plugin for RStudio), ChatGPT, etc.) to assist with this assignment, you *must* submit a *separate* Appendix .pdf file describing how the AI tool(s) were used. You may create this appendix file in a different program (i.e., it does not need to be generated from this .rmd file). For example, you may create it in Microsoft Word or Google Docs and then save it as pdf. For each AI tool used, include the following information:
+  - Which tool was used/The name of the tool
+  - For what purpose was this tool used
+  - If applicable, prompts that you gave the tool, what the output was, and how you incorporated the output in your submission.
+- If you did not use any AI tools, an appendix file is not necessary.
+- Save the files that you submit for this lab as Lab2_YourName_YourStudentNumber.pdf, Lab2_YourName_YourStudentNumber.Rmd, and if applicable, Lab2Appendix_YourName_YourStudentNumber.pdf
+
+# Lab 2 Introduction and Setup
+
+This is an R Markdown document. Markdown is a syntax for authoring documents that are a mix of text and R code and output. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button above, a document will be generated that includes both text content as well as the output of any embedded R code chunks within the document. When you submit lab assignments in STA288H1, you will need to submit this R Markdown (.Rmd) file AND the pdf file you generate by clicking on **Knit > Knit to PDF** above. To save on your own machine to upload to Quercus, check the boxes next to the two files in the files tab on the right, then click **More > Export** and download to your own machine.
+
+In this lab, you will summarize and interpret data for the participants in the study described in the following paper:
+
+Malami AB, Adeyemo YI, Aminu A, Oredugba FA (2026) "Comparison of chemomechanical and conventional caries removal methods in 6-to-12-year-old children: Randomized clinical trial". *PLoS One*, 21(1):
+e0339771. https://doi.org/10.1371/journal.pone.0339771 
+
+The dataset used in this paper is publicly available, as a web appendix. 
+
+The following code reads in the raw data and stores it in an R dataset called *Malami_etal_2026_Data.xlsx*. Be sure to run this *before* running the later R code so that the dataset is read in and ready for you to work with. If you do not do this, you will get error messages when you try to run chunks of R code in your rmd document. If you get an error when trying to read in the data, please ensure that your working directory is set to the same folder the data file and .rmd file are saved in, and that the data file is saved in the same folder as your .rmd file. Click on **More > Session > Set Working Directory** in the lower right panel to choose a folder to be your working directory. 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Do *not* remove or edit this R chunk. Make sure you run it (top right of this box) 
+# before trying to write and run code later in the assignment.
+
+library(readxl)  # For read_excel function to read in .xls files 
+library(tidyverse)  # For data manipulation and visualization
+
+# Code to read in data set:
+Lab2data <- read_excel("Malami_etal_2026_Data.xlsx", sheet = 1)
+ 
+theme_set(theme_bw()) # Not necessary but creates a dark-on-light theme for plots for easier printing and projecting. A list of themes is available here for reference: https://ggplot2.tidyverse.org/reference/ggtheme.html. 
+
+```
+
+*TIP: Before you start working on this assignment, save this file as "Lab2_YourName_YourStudentNumber.Rmd".*
+
+# Question 1 [9 marks]
+
+Dental treatments (e.g., fillings) can be anxiety-inducing for children. One of the outcomes collected by Malami et al. (2026) related to how well the patients tolerate the treatment as measured by the Frankl behaviour rating scale. In this questions, we are interested in the percentage of children aged 6-12 with negative behaviours during conventional treatment of dental caries (cavities). For a description of the Frankl behaviour rating scale, and how to interpret the scores, see the "Behavioural assessment" of the "Materials and methods" section of the Malami et al. (2026) paper. 
+
+
+**a.** *(3 marks)*	Use R to compute a *90% Bootstrap confidence interval* for the proportion of children aged 6-12 years of age who would have negative behaviour (as defined by the Frankl behaviour rating scale) during conventional dental treatment for their caries. 
+
+Before you begin your bootstrap procedure, set the seed to be your *student number*. 
+Be sure to add comments to your code to describe what it's doing.
+
+```{r}
+# YOUR CODE HERE
+
+```
+
+Report the confidence interval you computed in the following format: [lower bound, upper bound]. Round to 4 decimal points.
+
+YOUR ANSWER HERE
+
+**b.**	*(2 marks)*	Use R to compute a *90% approximate Z confidence interval* for the proportion of children aged 6-12 years of age who would have negative behaviour (as defined by the Frankl behaviour rating scale) during conventional dental treatment for their caries. 
+
+```{r}
+# YOUR CODE HERE
+
+```
+
+Report the confidence interval you computed in the following format: [lower bound, upper bound]. Round to 4 decimal points.
+
+YOUR ANSWER HERE
+
+**c.**	*(2 marks)* How do the confidence intervals you computed in parts *1a* and *1b* compare? Which confidence interval is more appropriate in this situation? Briefly justify your answer. [Max 50 words.]
+
+YOUR ANSWER HERE
+
+
+**d.**	*(2 marks)* Interpret the confidence interval that you selected in *1c* in the context of the Malami et al. (2026) study. [Max 50 words.]
+
+YOUR ANSWER HERE
+
+
+*TIP: Knit to PDF and save/export copies of your current Rmd and PDF drafts onto your computer.*
+
+\newpage
+
+# Question 2 [11 marks]
+
+The authors conducted this study to compare the effectiveness of conventional drilling to an chemo-mechanical method, a new less invasive process, in the treatment of dental caries (cavities) in children aged 6-12. In this question, we will look at data from both the convention and the chemo-mechanical methods.
+
+
+**a.**	
+
+*i.* *(2 marks)* What statistical procedure(s) does the code below run? Be as specific as possible using STA288 vocabulary and notation and be sure to describe the relevant parameter(s) in the context of the Malami et al. (2026) study. [Max 75 words.]
+
+```{r warning=FALSE}
+# Use this code to answer parts *2ai* and *2bii*
+counts <- Lab2data %>%
+  summarise(nneg_conv=sum(conven_franklrating==2),nneg_chem=sum(cmcr_franklrating==2))
+
+prop.test(c(counts$nneg_conv,counts$nneg_chem),c(33,33), correct=FALSE)
+```
+
+YOUR ANSWER HERE
+
+
+*ii.*	*(2 marks)* Is the procedure(s) run by the R code shown above in part *2ai* appropriate in this situation? Explain why or why not. [Max 50 words.]
+
+YOUR ANSWER HERE
+
+
+**b.** For all parts of Question *2b*, consider the following research question: Do the majority of 6-12 year old children behave at least as well (as defined by the Frankl behaviour rating scale) with the new chemo-mechanical method compared to the conventional method during treatment of dental caries? 
+
+*i* *(1 mark)* State the null and alternative hypotheses that corresponds with this research question. Be sure to define the relevant parameter(s) in the context of the Malami et al. (2026) study.
+
+YOUR ANSWER HERE
+
+
+*ii.* *(2 marks)* What statistical procedure would be the most appropriate to test the hypothesis from part *2bi*, based on the Malami et al. (2026) data? Be specific using STA288 vocabulary and notation. Then, briefly justify your choice based on the goal of the research question and model assumptions. [75 words max.]
+
+YOUR ANSWER HERE
+
+
+*iii.* *(2 marks)* Use R to conduct the procedure you chose in part *2bii*. 
+```{r}
+# YOUR CODE HERE
+
+```
+
+*in.* *(2 marks)* Interpret the results of the procedure you conducted in *2biii* in the context of the Malami et al. (2026) study. [50 words max.]
+
+YOUR ANSWER HERE
+
+
+
+*TIP: Knit to PDF and save/export copies of your current Rmd and PDF drafts onto your computer.*
+
+\newpage
+
+**Lab Assignment 2 Authorship Declaration:**
+Select the option that accurately describes your work on this assignment, and paste it in the space below. 
+
+- I answered all Lab 2 questions and wrote/ran R code on my own, referring to Malami et al. (2026), STA288 course materials and LearnR modules 1-3 as needed.
+
+- I answered all Lab 2 questions and wrote/ran R code on my own, referring to Malami et al. (2026), STA288 course materials and LearnR modules 1-3 as needed and received some support from the teaching team in office hours and/or the Lab Q&A.
+
+- I answered all Lab 2 questions and wrote/ran R code on my own, referring to Malami et al. (2026), STA288 course materials and LearnR modules 1-3. I also used at least one AI tool (e.g. Grammarly, Copilot (including the Copilot plugin for RStudio), ChatGPT, etc.) to assist with this assignment. As required, I am submitting an *additional .pdf* Appendix file with my assignment describing how the AI tool(s) were used including the information described in the General Instructions section at the top of this assignment. 
+
+- I answered all Lab 2 questions and wrote/ran R code on my own, referring to Malami et al. (2026), STA288 course materials and LearnR modules 1-3, and received some support from the teaching team in office hours and/or the Lab Q&A. I also used at least one AI tool (e.g. Grammarly, Copilot (including the Copilot plugin for RStudio), ChatGPT, etc.) to assist with this assignment. As required, I am submitting an *additional .pdf* Appendix file with my assignment describing how the AI tool(s) were used including the information described in the General Instructions section at the top of this assignment. 
+
+COPY YOUR AUTHORSHIP DECLARATION HERE:
+
+
+
+
+___________________________________________________________
+THIS IS THE END OF LAB ASSIGNMENT 2
+```{r echo=FALSE}
+# for grading purposes only (do not remove or edit this box)
+runif(1,0,1)
+date()
+```
+
